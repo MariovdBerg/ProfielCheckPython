@@ -1,9 +1,11 @@
 # IDEs
 .vscode/
 .idea/
+.claude/
 
 # Intermediate Coverage file
 .coverage
+htmlcov/
 
 # Python runtime
 *.pyc
