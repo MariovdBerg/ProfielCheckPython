@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python -m unittest discover -s test -t . 2>&1)",
+      "PowerShell($py = \\(Get-Command py -ErrorAction SilentlyContinue\\).Source; if \\(-not $py\\) { Get-ChildItem .idea\\\\misc.xml | Get-Content; Get-ChildItem -Directory -Force | Select Name } else { & py -m unittest discover -s test -t . 2>&1 | Select-Object -Last 30 })",
+      "PowerShell(& C:\\\\ProgramData\\\\miniforge3\\\\python.exe -m unittest discover -s test -t . 2>&1)",
+      "Bash(/c/ProgramData/miniforge3/python.exe -)",
+      "Bash(mkdir -p /c/Users/BergM/AppData/Local/Temp/claude/C--MyPrograms-ProfielCheckPython/6f078c2c-84db-4d7b-89a7-c26f7c03187e/scratchpad/backup_original)",
+      "Bash(cp -r src test example_usage.py README.md todo.txt /c/Users/BergM/AppData/Local/Temp/claude/C--MyPrograms-ProfielCheckPython/6f078c2c-84db-4d7b-89a7-c26f7c03187e/scratchpad/backup_original/)",
+      "Read(//c/Users/BergM/AppData/Local/Temp/claude/C--MyPrograms-ProfielCheckPython/6f078c2c-84db-4d7b-89a7-c26f7c03187e/scratchpad/**)",
+      "Bash(/c/ProgramData/miniforge3/python.exe -c \"import pytest, sys; print\\('pytest', pytest.__version__\\)\")",
+      "Bash(/c/ProgramData/miniforge3/python.exe -c \"import pytest_cov; print\\('cov ok'\\)\")",
+      "Bash(/c/ProgramData/miniforge3/python.exe -m venv .venv)",
+      "Bash(.venv/Scripts/python.exe -m pip install -q pytest pytest-cov ruff)",
+      "Bash(.venv/Scripts/python.exe -m pytest --version)",
+      "Bash(.venv/Scripts/python.exe -m ruff --version)"
+    ]
+  }
+}

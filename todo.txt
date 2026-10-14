@@ -1,0 +1,16 @@
+Open
+- Git: de repository staat in de submap ProfielCheckPython/ en bevat alleen .gitattributes. De code
+  (src/, test/, README.md, ...) staat erbuiten en wordt dus niet bijgehouden. Daarnaast een .gitignore
+  toevoegen voor .venv/, __pycache__/, .pytest_cache/, .ruff_cache/, .coverage en .idea/workspace.xml.
+- Ruwheid (ERROR121): foutcode 121 is gekozen omdat die nog vrij was; controleren of dit overeenkomt met
+  de originele C#-code / Hydra-documentatie. Ook bevestigen dat het voorland niet op ruwheid gecontroleerd
+  hoeft te worden en dat de grenzen 0.5 en 1.0 zelf zijn toegestaan.
+- Packaging: pyproject.toml, package-naam (nu 'src'), installatie-instructies in README.md kloppen nog niet.
+- example_usage.py: voorbeeld 3 geeft ERROR116 (laatste taluddeel heeft helling 1:10); voorbeelddata aanpassen.
+
+Afgerond
+- ERROR113-melding aangepast naar 0.1 meter (gelijk aan DELTAXMINDIJK).
+- TANAFLW = 1/15; de aparte bermgrens (TANABERM) is samengevoegd met TANAFLW, zodat er geen gat meer
+  zit tussen "berm" en ERROR116.
+- Ruwheidscontrole (ERROR121) voor de dijkdelen, met tests.
+- Waarschuwing bij bestanden die geen geldig UTF-8 zijn; deze worden dan als cp1252 gelezen.
