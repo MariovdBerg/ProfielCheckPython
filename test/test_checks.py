@@ -111,7 +111,7 @@ def talud_met_middendeel(tan_a):
 @pytest.mark.parametrize("tan_a, verwacht", [
     (checks.TANAMIN, ProfielError.OK),            # precies 1:100 is toegestaan
     (checks.TANAMIN * 0.99, ProfielError.ERROR115),
-    (checks.TANAFLW, ProfielError.OK),            # precies 1:15 is een berm
+    (checks.TANABERM, ProfielError.OK),           # precies 1:15 is een berm
     (checks.TANAFLW * 1.001, ProfielError.ERROR116),  # net steiler dan 1:15 is geen berm meer
     (checks.TANASTL, ProfielError.OK),            # precies 1:8 is een talud
     (0.1, ProfielError.ERROR116),

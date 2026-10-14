@@ -132,18 +132,20 @@ python -m venv .venv
 
 ## Examples
 
-Run the comprehensive example script:
+Run the example script from the project root:
 
 ```bash
 python example_usage.py
 ```
 
 This demonstrates:
-1. Creating profiles from scratch
-2. Parsing profile data
-3. String conversion utilities
-4. Validation error handling
-5. All error types enumeration
+1. Creating a profile from a list of points
+2. Reading a version 3 profile from a string
+3. Reading a version 4 profile from a string
+4. Saving as version 4 and reading the file back
+5. Validation errors for an invalid profile and an unreadable line
+
+`test/test_example_usage.py` runs these examples, so they stay valid.
 
 ## Requirements
 

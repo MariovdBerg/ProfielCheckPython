@@ -13,8 +13,9 @@ from .profiel_enums import DamType, Damwandmodule, ProfielError
 TANAMINVOORLAND = 0.1  # Maximale helling voor voorland
 TANAMIN = 0.01  # Minimal helling voor profieldeel
 TANAMAX = 1.0  # Maximale helling voor profieldeel
-TANAFLW = 1.0 / 15.0  # Maximale helling voor een berm: tot en met 1 op 15
-TANASTL = 0.125  # Minimale helling voor een talud: vanaf 1 op 8
+TANAFLW = 1.0 / 15.0  # Minimal helling voor flauw profieldeel
+TANASTL = 0.125  # Maximale helling voor steil profieldeel
+TANABERM = 1.0 / 15.0  # Profieldelen met een helling tot en met 1 op 15 tellen als berm
 DELTAXMINVOORLAND = 10.0  # Minimale afstand tussen de voorlandpunten
 DELTAXMINDIJK = 0.1  # Minimale afstand tussen de dijkpunten
 NBERMEN = 2  # Maximale aantal bermen
@@ -114,7 +115,7 @@ def _check_dijk(punten, kruinhoogte):
     # Geschreven als 'not >=' zodat een ontbrekende (NaN) kruinhoogte ook een fout geeft
     if not kruinhoogte >= punten[-2].z + 2 * tan_as[-1]:
         return ProfielError.ERROR122
-    if sum(1 for tan_a in tan_as if tan_a <= TANAFLW) > NBERMEN:
+    if sum(1 for tan_a in tan_as if tan_a <= TANABERM) > NBERMEN:
         return ProfielError.ERROR120
     return None
 
