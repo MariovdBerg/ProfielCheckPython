@@ -1,0 +1,16 @@
+# IDEs
+.vscode/
+.idea/
+
+# Intermediate Coverage file
+.coverage
+
+# Python runtime
+*.pyc
+*.egg-info
+.pytest_cache
+.ruff_cache/
+
+# Virtual environments
+.venv/
+**__pycache__/
