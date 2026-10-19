@@ -1,14 +1,15 @@
 """
 Voorbeelden van het gebruik van de ProfielCheckPython-module.
 
-Uitvoeren vanuit de hoofdmap van het project:
+Uitvoeren vanuit de hoofdmap van het project, met prflcheck geïnstalleerd
+(pip install -e .):
     python example_usage.py
 """
 
 import tempfile
 from pathlib import Path
 
-from src import DamType, Damwandmodule, Profiel, ProfielPunt, ProfielVersion
+from prflcheck import DamType, Damwandmodule, Profiel, ProfielPunt, ProfielVersion
 
 PROFIEL_V3 = """VERSIE	3.0
 DAM		0

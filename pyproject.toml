@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "prflcheck"
+dynamic = ["version"]
+description = "Read, write and validate Hydra-NL/HydraRing profiles (.prfl)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "EUPL-1.2"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Rolf Waterman" },
+    { name = "Mario van den Berg", email = "M.vandenBerg@hkv.nl" },
+]
+keywords = ["hydra-nl", "hydraring", "ringtoets", "profiel", "dijk", "prfl"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: Dutch",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Hydrology",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/MariovdBerg/ProfielCheckPython"
+Source = "https://github.com/MariovdBerg/ProfielCheckPython"
+Issues = "https://github.com/MariovdBerg/ProfielCheckPython/issues"
+Changelog = "https://github.com/MariovdBerg/ProfielCheckPython/blob/main/CHANGELOG.md"
+
+# Eén bron voor het versienummer: __version__ in het package
+[tool.hatch.version]
+path = "src/prflcheck/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prflcheck"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/prflcheck",
+    "test",
+    "example_usage.py",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+# prflcheck wordt geïnstalleerd getest (pip install -e .), . is nodig voor example_usage.py
+pythonpath = ["."]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["prflcheck"]
+branch = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+# Mappen met eigen code, zodat imports van prflcheck als first-party worden gesorteerd
+src = ["src", "."]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]
+# De foutmeldingen in ProfielError zijn bewust lange regels
+per-file-ignores = { "src/prflcheck/profiel_enums.py" = ["E501"] }

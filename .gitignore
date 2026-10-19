@@ -19,3 +19,7 @@ htmlcov/
 
 # Other
 *.zip
+
+# Build output
+build/
+dist/

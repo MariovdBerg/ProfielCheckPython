@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from src import ProfielPunt
+from prflcheck import ProfielPunt
 
 TESTPROFILES_DIR = Path(__file__).parent / "testprofiles"
 

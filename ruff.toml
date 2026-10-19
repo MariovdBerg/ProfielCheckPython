@@ -1,7 +1,0 @@
-line-length = 120
-target-version = "py39"
-
-[lint]
-select = ["E", "F", "W", "B", "I", "UP"]
-# De foutmeldingen in ProfielError zijn bewust lange regels
-per-file-ignores = { "src/profiel_enums.py" = ["E501"] }

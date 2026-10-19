@@ -10,12 +10,15 @@ ProfielCheckPython is a conversion of the C# library `daas.fn` 1.0.1.0 by Rolf W
 A first Python conversion (2025) was an intermediate step and was not released separately;
 its own deviations from the C# code are listed at the end of the 2.0.0 section.
 
+## [Unreleased]
+
 ## [2.0.0] - 2026-10-19
 
 ### API: from C# to Python
 
 | C# (`daas.fn`) | Python 2.0.0 |
 |---|---|
+| Namespace `daas.fn` | Package `prflcheck` (folder `src/prflcheck/`): `from prflcheck import Profiel` |
 | `new Profiel(profielData)`, `new Profiel(naam, profielData)` | `Profiel.from_string(text)` or `Profiel.from_file(path)` |
 | `new Profiel(id, damtype, damhoogte, richting, kruinhoogte, voorland, damwandmodule, memo, profielpunten)` | `Profiel.from_punten(punten, voorland=..., id=..., damtype=..., damwand=..., ...)` |
 | `profiel.Controleer()` | `profiel.check()` |
@@ -75,6 +78,11 @@ its own deviations from the C# code are listed at the end of the 2.0.0 section.
 - Test suite with pytest (256 tests, 100% branch coverage), including boundary tests for
   every validation limit and round-trip tests for v3 and v4. Linting with ruff.
 - `example_usage.py`, README, this changelog, and `LICENSE` (EUPL-1.2).
+- **Installable package:** `pyproject.toml` (build backend hatchling), so `pip install .`
+  works and a wheel and source distribution can be built for PyPI under the name
+  `prflcheck`. The version number is read from `prflcheck.__version__`. The settings of
+  pytest, coverage and ruff are in `pyproject.toml`, the development tools in the `dev` extra
+  (`pip install -e ".[dev]"`). GitHub Actions runs the tests and builds the package.
 
 ### Changed
 
@@ -128,3 +136,6 @@ C# library `daas.fn` for .NET Framework by Rolf Waterman, © HKV Services 2016, 
 `Profiel.cs`, `ProfielPunt.cs`, `ProfielDeel.cs`, `ProfielCheck.cs`, `ProfielEnums.cs`,
 `ConvertString.cs` and `EnumeratorExtensions.cs`. Reads and writes Hydra/Ringtoets profiles
 (version 3 and 4) and validates them with `Controleer()`.
+
+[Unreleased]: https://github.com/MariovdBerg/ProfielCheckPython/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/MariovdBerg/ProfielCheckPython/releases/tag/v2.0.0
