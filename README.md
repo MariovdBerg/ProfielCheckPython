@@ -124,7 +124,7 @@ Dutch `description`:
 | Code | Rule |
 |---|---|
 | OK | The profile is valid |
-| INVOER | Unreadable lines, inconsistent point counts, or a foreland of 1 point |
+| INVOER | Unreadable lines, inconsistent point counts, a foreland of 1 point, or no dike section at all (only 1 point, or only a foreland) without a dam wall |
 | 101-104 | Foreland: x increasing, no point below the first point, at least 10 m between points, slopes at most 1:10 |
 | 105 | No points at all (and no dam wall) |
 | 111-115 | Dike: x and z increasing, at least 0.1 m between points, slopes between 1:100 and 1:1 |

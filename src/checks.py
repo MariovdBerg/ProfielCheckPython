@@ -50,6 +50,10 @@ def check(profiel):
     if not profiel.voorland_punten and not profiel.dijk_punten:
         return ProfielError.ERROR105 if profiel.damwand == Damwandmodule.GEEN else ProfielError.OK
 
+    # Zonder dijkdeel (één punt, of alleen voorland) is het geen dijkprofiel; bij een damwand mag dat wel
+    if len(profiel.talud_punten) < 2 and profiel.damwand == Damwandmodule.GEEN:
+        return ProfielError.INVOER
+
     fout = _check_dijk(profiel.talud_punten, profiel.kruinhoogte) or _check_ruwheid(profiel.talud_punten)
     if fout:
         return fout
