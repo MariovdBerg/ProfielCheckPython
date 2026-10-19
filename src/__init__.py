@@ -1,7 +1,10 @@
 """
-daas.fn Python Module
+ProfielCheckPython
 Converted from C# - HKV Services
-Copyright © HKV Services 2016, 2017
+Copyright © 2016, 2017 HKV Services (original C# code)
+Copyright © 2025-2026 HKV lijn in water B.V. (Python code)
+Licensed under the EUPL
+SPDX-License-Identifier: EUPL-1.2
 
 Profiel Hydra/Ringtoets functionality in Python
 """
@@ -13,7 +16,7 @@ from .profiel_enums import DamType, Damwandmodule, ProfielDeelType, ProfielError
 from .reader import read_file, read_string
 from .writer import write_string
 
-__version__ = "1.0.1.0"
+__version__ = "2.0.0"
 __all__ = [
     'ProfielError',
     'DamType',

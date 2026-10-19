@@ -3,9 +3,10 @@
 A Python port of the HKV C# library for reading, writing and validating Hydra/Ringtoets
 profiles (`.prfl`): cross-sections of a dike with an optional foreland (voorland) and dam.
 
-**Original Author:** Rolf Waterman  
-**Copyright:** © HKV Services 2016, 2017  
-**Version:** 1.0.1.0
+**Authors:** Rolf Waterman (original C# code), Mario van den Berg, Claude  
+**Copyright:** © 2025-2026 HKV lijn in water B.V.; original C# code © 2016, 2017 HKV Services  
+**License:** [EUPL-1.2](LICENSE)  
+**Version:** 2.0.0 (see [CHANGELOG.md](CHANGELOG.md); not compatible with the C# library or 1.0.1.0)
 
 ## Overview
 
@@ -183,9 +184,19 @@ On Linux or macOS, use `.venv/bin/python` instead of `.venv/Scripts/python`.
 
 ## License
 
-Original C# code: Copyright © HKV Services 2016, 2017
+Copyright © 2016, 2017 HKV Services (original C# code)  
+Copyright © 2025-2026 HKV lijn in water B.V. (Python code)
+
+Licensed under the EUPL
+
+This work is licensed under the [European Union Public Licence v1.2](LICENSE) (EUPL-1.2),
+an open-source licence with copyleft: you may use, change and distribute the code, also
+commercially, provided that you keep the copyright notices, include the licence, mark your
+changes, and distribute changed versions under the EUPL (or a compatible licence listed in
+its appendix). The official text in all EU languages is available at
+<https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12>.
 
 ## Credits
 
-- **Original Author:** Rolf Waterman (HKV Consultants)
-- **Python Conversion:** 2025
+- **Original author:** Rolf Waterman (HKV), C# library `daas.fn` (2016, 2017)
+- **Python version:** Mario van den Berg and Claude (Anthropic)

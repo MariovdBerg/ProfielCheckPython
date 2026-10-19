@@ -1,8 +1,12 @@
 """
 Profiel writer
 Converted from Profiel.cs (Save)
-Copyright © HKV Services 2016, 2017
+Copyright © 2016, 2017 HKV Services (original C# code)
+Copyright © 2025-2026 HKV lijn in water B.V. (Python code)
+Licensed under the EUPL
+SPDX-License-Identifier: EUPL-1.2
 Author: Rolf Waterman
+Co-authors: Mario van den Berg, Claude
 
 Wegschrijven van profielen in het formaat van versie 3 en versie 4.
 """

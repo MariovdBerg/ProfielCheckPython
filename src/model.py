@@ -1,8 +1,12 @@
 """
 Profiel datamodel
 Converted from Profiel.cs, ProfielPunt.cs and ProfielDeel.cs
-Copyright © HKV Services 2016, 2017
+Copyright © 2016, 2017 HKV Services (original C# code)
+Copyright © 2025-2026 HKV lijn in water B.V. (Python code)
+Licensed under the EUPL
+SPDX-License-Identifier: EUPL-1.2
 Author: Rolf Waterman
+Co-authors: Mario van den Berg, Claude
 
 Profiel Hydra/Ringtoets: punten, profieldelen en het profiel zelf.
 Inlezen, wegschrijven en valideren staan in reader.py, writer.py en checks.py.
