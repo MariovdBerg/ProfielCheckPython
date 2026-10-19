@@ -3,7 +3,7 @@ import math
 
 import pytest
 
-from src import DamType, Damwandmodule, Profiel, ProfielError, ProfielPunt, read_file, read_string
+from prflcheck import DamType, Damwandmodule, Profiel, ProfielError, ProfielPunt, read_file, read_string
 
 from .conftest import fixture_path
 

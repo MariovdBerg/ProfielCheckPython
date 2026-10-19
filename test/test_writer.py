@@ -2,7 +2,16 @@ import math
 
 import pytest
 
-from src import DamType, Damwandmodule, Profiel, ProfielError, ProfielPunt, ProfielVersion, read_file, write_string
+from prflcheck import (
+    DamType,
+    Damwandmodule,
+    Profiel,
+    ProfielError,
+    ProfielPunt,
+    ProfielVersion,
+    read_file,
+    write_string,
+)
 
 from .conftest import fixture_path, punten
 

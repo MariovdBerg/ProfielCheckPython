@@ -5,10 +5,14 @@ Uitvoeren vanuit de hoofdmap van het project:
     python example_usage.py
 """
 
+import sys
 import tempfile
 from pathlib import Path
 
-from src import DamType, Damwandmodule, Profiel, ProfielPunt, ProfielVersion
+# Het package staat in src/ en is (nog) niet geïnstalleerd: zet src/ op het pad
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+
+from prflcheck import DamType, Damwandmodule, Profiel, ProfielPunt, ProfielVersion  # noqa: E402
 
 PROFIEL_V3 = """VERSIE	3.0
 DAM		0

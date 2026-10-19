@@ -2,7 +2,7 @@ import math
 
 import pytest
 
-from src import Damwandmodule, Profiel, ProfielError, ProfielPunt, checks
+from prflcheck import Damwandmodule, Profiel, ProfielError, ProfielPunt, checks
 
 from .conftest import punten
 

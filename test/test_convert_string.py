@@ -3,7 +3,7 @@ import math
 
 import pytest
 
-from src import format_float, parse_float, parse_int
+from prflcheck import format_float, parse_float, parse_int
 
 
 @pytest.mark.parametrize("tekst, verwacht", [

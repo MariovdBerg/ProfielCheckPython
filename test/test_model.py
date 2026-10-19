@@ -2,7 +2,7 @@ import math
 
 import pytest
 
-from src import DamType, Damwandmodule, Profiel, ProfielDeel, ProfielDeelType, ProfielPunt
+from prflcheck import DamType, Damwandmodule, Profiel, ProfielDeel, ProfielDeelType, ProfielPunt
 
 from .conftest import punten
 

@@ -18,7 +18,8 @@ profiles (`.prfl`): cross-sections of a dike with an optional foreland (voorland
 ## Installation
 
 The module is not (yet) an installable package: there is no `pyproject.toml`, so `pip install`
-does not work. The code lives in the folder `src` and is imported as `src`.
+does not work. The code is the package `prflcheck` in the folder `src/prflcheck/`, and is
+imported as `prflcheck`.
 
 ### From source
 
@@ -28,25 +29,27 @@ cd ProfielCheckPython
 python example_usage.py
 ```
 
-Scripts in the project folder can then use `from src import ...` directly.
+### Using the package
 
-### Direct use from another project
-
-Add the project folder (the folder that *contains* `src`) to the Python path:
+Add the folder `src` (the folder that *contains* `prflcheck`) to the Python path, for
+example at the top of your script:
 
 ```python
 import sys
-sys.path.append(r"C:\path\to\ProfielCheckPython")
+sys.path.append(r"C:\path\to\ProfielCheckPython\src")
 
-from src import Profiel, ProfielPunt, ProfielError
+from prflcheck import Profiel, ProfielPunt, ProfielError
 ```
+
+Or set the environment variable `PYTHONPATH` to that folder. `example_usage.py` and the tests
+already do this themselves.
 
 ## Quick Start
 
 ### Creating a profile
 
 ```python
-from src import Damwandmodule, DamType, Profiel, ProfielPunt, ProfielVersion
+from prflcheck import Damwandmodule, DamType, Profiel, ProfielPunt, ProfielVersion
 
 # Profile points: x (m), z (m+NAP), roughness
 punten = [
@@ -85,7 +88,7 @@ are `NaN` (numbers) or `GEEN` (dam type and dam wall).
 ### Reading a profile
 
 ```python
-from src import Profiel
+from prflcheck import Profiel
 
 profiel = Profiel.from_file("profile_v4.prfl")   # version 3 or 4, detected from VERSIE
 text = profiel.to_string(3)                      # the same profile in the version 3 format
@@ -135,10 +138,12 @@ Dutch `description`:
 | 130 | Dam wall (crest height) above the end of the foreland |
 | 800, 801 | Invalid dam type or dam wall module |
 
-The limits are constants in `src/checks.py`. A missing (`NaN`) crest height or roughness
+The limits are constants in `src/prflcheck/checks.py`. A missing (`NaN`) crest height or roughness
 is reported as an error.
 
 ## Module Structure
+
+The package `prflcheck` (folder `src/prflcheck/`) contains:
 
 - **model.py**: `ProfielPunt`, `ProfielDeel` and `Profiel` (data only)
 - **reader.py**: `read_file()`, `read_string()` for version 3 and 4
@@ -171,7 +176,7 @@ The tests use pytest, pytest-cov and ruff (`requirements-dev.txt`). On Windows:
 ```bash
 python -m venv .venv
 .venv/Scripts/python -m pip install -r requirements-dev.txt
-.venv/Scripts/python -m pytest --cov=src --cov-branch
+.venv/Scripts/python -m pytest --cov=prflcheck --cov-branch
 .venv/Scripts/python -m ruff check src test example_usage.py
 ```
 

@@ -2,8 +2,8 @@ import logging
 
 import pytest
 
-from src import Profiel, ProfielError, read_file
-from src.reader import VERVANGTEKEN
+from prflcheck import Profiel, ProfielError, read_file
+from prflcheck.reader import VERVANGTEKEN
 
 TEKST = "VERSIE 4.0\nID X\nVOORLAND 0\nKRUINHOOGTE 8.0\nDIJK 2\n0 2 0.8\n8 3 0.8\nMEMO\nDijk bij Één, café\n"
 

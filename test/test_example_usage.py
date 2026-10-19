@@ -1,7 +1,7 @@
 """Houdt example_usage.py werkend: de voorbeelden moeten de verwachte uitkomst geven."""
 
 import example_usage
-from src import ProfielError
+from prflcheck import ProfielError
 
 
 def test_voorbeelden_1_tot_4_zijn_geldig(capsys):

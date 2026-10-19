@@ -16,6 +16,7 @@ its own deviations from the C# code are listed at the end of the 2.0.0 section.
 
 | C# (`daas.fn`) | Python 2.0.0 |
 |---|---|
+| Namespace `daas.fn` | Package `prflcheck` (folder `src/prflcheck/`): `from prflcheck import Profiel` |
 | `new Profiel(profielData)`, `new Profiel(naam, profielData)` | `Profiel.from_string(text)` or `Profiel.from_file(path)` |
 | `new Profiel(id, damtype, damhoogte, richting, kruinhoogte, voorland, damwandmodule, memo, profielpunten)` | `Profiel.from_punten(punten, voorland=..., id=..., damtype=..., damwand=..., ...)` |
 | `profiel.Controleer()` | `profiel.check()` |
