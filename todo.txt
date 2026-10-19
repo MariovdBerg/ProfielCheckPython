@@ -2,5 +2,3 @@ Open
 - Ruwheid (ERROR121): de C#-code had geen ruwheidscontrole en geen foutcode 121 (de constanten RUWHEIDLAAG
   en RUWHEIDHOOG bestonden wel). Nog bevestigen met de Hydra-documentatie dat de controle zo klopt: alleen
   dijkdelen, grenzen 0.5 en 1.0 zelf toegestaan.
-- Packaging: het package prflcheck staat in src/prflcheck/ (src-layout). Nog nodig: pyproject.toml,
-  zodat 'pip install -e .' werkt, en de installatie-instructies in README.md daarop aanpassen.

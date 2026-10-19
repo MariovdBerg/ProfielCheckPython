@@ -1,12 +1,12 @@
 # ProfielCheckPython
 
-A Python port of the HKV C# library for reading, writing and validating Hydra/Ringtoets
+A Python port of the HKV C# library for reading, writing and validating Hydra-NL/HydraRing
 profiles (`.prfl`): cross-sections of a dike with an optional foreland (voorland) and dam.
 
 **Authors:** Rolf Waterman (original C# code), Mario van den Berg, Claude  
 **Copyright:** © 2025-2026 HKV lijn in water B.V.; original C# code © 2016, 2017 HKV Services  
-**License:** [EUPL-1.2](LICENSE)  
-**Version:** 2.0.0 (see [CHANGELOG.md](CHANGELOG.md); not compatible with the C# library or 1.0.1.0)
+**License:** [EUPL-1.2](https://github.com/MariovdBerg/ProfielCheckPython/blob/main/LICENSE)  
+**Version:** 2.0.0 (see [CHANGELOG.md](https://github.com/MariovdBerg/ProfielCheckPython/blob/main/CHANGELOG.md); not compatible with the C# library or 1.0.1.0)
 
 ## Overview
 
@@ -17,32 +17,27 @@ profiles (`.prfl`): cross-sections of a dike with an optional foreland (voorland
 
 ## Installation
 
-The module is not (yet) an installable package: there is no `pyproject.toml`, so `pip install`
-does not work. The code is the package `prflcheck` in the folder `src/prflcheck/`, and is
-imported as `prflcheck`.
+The package is called `prflcheck` (folder `src/prflcheck/`) and has no dependencies.
+Install it from GitHub:
 
-### From source
+```bash
+pip install git+https://github.com/MariovdBerg/ProfielCheckPython.git
+```
+
+Or from a local clone, in editable mode for development:
 
 ```bash
 git clone https://github.com/MariovdBerg/ProfielCheckPython.git
 cd ProfielCheckPython
+pip install -e .
 python example_usage.py
 ```
 
-### Using the package
-
-Add the folder `src` (the folder that *contains* `prflcheck`) to the Python path, for
-example at the top of your script:
+Then import it as usual:
 
 ```python
-import sys
-sys.path.append(r"C:\path\to\ProfielCheckPython\src")
-
 from prflcheck import Profiel, ProfielPunt, ProfielError
 ```
-
-Or set the environment variable `PYTHONPATH` to that folder. `example_usage.py` and the tests
-already do this themselves.
 
 ## Quick Start
 
@@ -171,16 +166,32 @@ This demonstrates:
 
 ## Testing
 
-The tests use pytest, pytest-cov and ruff (`requirements-dev.txt`). On Windows:
+The tests use pytest, pytest-cov and ruff (the `dev` extra in `pyproject.toml`, which also
+installs `build` and `twine`). The tests run against the installed package. On Windows:
 
 ```bash
 python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements-dev.txt
-.venv/Scripts/python -m pytest --cov=prflcheck --cov-branch
+.venv/Scripts/python -m pip install -e ".[dev]"
+.venv/Scripts/python -m pytest --cov
 .venv/Scripts/python -m ruff check src test example_usage.py
 ```
 
-On Linux or macOS, use `.venv/bin/python` instead of `.venv/Scripts/python`.
+On Linux or macOS, use `.venv/bin/python` instead of `.venv/Scripts/python`. GitHub Actions
+runs the tests on Python 3.9 to 3.14 on Linux and Windows (`.github/workflows/ci.yml`).
+
+## Building and Publishing
+
+The version number is set in one place, `__version__` in `src/prflcheck/__init__.py`.
+To make a release, update it, add a section to `CHANGELOG.md`, and build and check the
+distributions:
+
+```bash
+.venv/Scripts/python -m build
+.venv/Scripts/python -m twine check dist/*
+```
+
+This creates a wheel and a source distribution in `dist/`. Upload them to PyPI with
+`twine upload dist/*`.
 
 ## Requirements
 
@@ -194,7 +205,7 @@ Copyright © 2025-2026 HKV lijn in water B.V. (Python code)
 
 Licensed under the EUPL
 
-This work is licensed under the [European Union Public Licence v1.2](LICENSE) (EUPL-1.2),
+This work is licensed under the [European Union Public Licence v1.2](https://github.com/MariovdBerg/ProfielCheckPython/blob/main/LICENSE) (EUPL-1.2),
 an open-source licence with copyleft: you may use, change and distribute the code, also
 commercially, provided that you keep the copyright notices, include the licence, mark your
 changes, and distribute changed versions under the EUPL (or a compatible licence listed in
