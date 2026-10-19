@@ -242,3 +242,57 @@ def test_geometrie_wordt_voor_ruwheid_gecontroleerd():
 def test_error121_enum():
     assert ProfielError.ERROR121.code == 121
     assert "ruwheid" in ProfielError.ERROR121.description.lower()
+
+
+# --- Geen dijkdeel: één punt of alleen voorland -------------------------------
+
+def test_een_punt_zonder_damwand_geeft_invoer():
+    """Eén punt is geen dijkprofiel."""
+    assert Profiel(dijk_punten=[ProfielPunt(0, 2, 0.8)], kruinhoogte=8.0).check() == ProfielError.INVOER
+
+
+@pytest.mark.parametrize("damwand", [Damwandmodule.DAMWAND, Damwandmodule.DAMWAND_PLUS_NEUS])
+def test_een_punt_met_damwand_is_ok(damwand):
+    profiel = Profiel(dijk_punten=[ProfielPunt(0, 2, 0.8)], kruinhoogte=8.0, damwand=damwand)
+    assert profiel.check() == ProfielError.OK
+
+
+def test_een_punt_uit_bestand_geeft_invoer():
+    profiel = Profiel.from_string("VERSIE 4.0\nVOORLAND 0\nKRUINHOOGTE 8.0\nDIJK 1\n0 2 0.8\n")
+    assert profiel.invoerfouten == []
+    assert profiel.check() == ProfielError.INVOER
+
+
+def test_een_punt_wordt_na_damtype_gecontroleerd():
+    profiel = Profiel(dijk_punten=[ProfielPunt(0, 2, 0.8)], kruinhoogte=8.0, damtype=9)
+    assert profiel.check() == ProfielError.ERROR800
+
+
+VOORLAND = [ProfielPunt(0, 0, 0.8), ProfielPunt(20, 1, 0.8)]
+
+
+def test_alleen_voorland_zonder_damwand_geeft_invoer():
+    """Alleen voorland is geen dijkprofiel."""
+    assert Profiel(voorland_punten=VOORLAND, kruinhoogte=5.0).check() == ProfielError.INVOER
+
+
+def test_voorland_en_alleen_teenpunt_geeft_invoer():
+    """Een DIJK-sectie met alleen het teenpunt heeft geen dijkdeel."""
+    profiel = Profiel(voorland_punten=VOORLAND, dijk_punten=[ProfielPunt(20, 1, 0.8)], kruinhoogte=5.0)
+    assert profiel.check() == ProfielError.INVOER
+
+
+@pytest.mark.parametrize("damwand", [Damwandmodule.DAMWAND, Damwandmodule.DAMWAND_PLUS_NEUS])
+def test_alleen_voorland_met_damwand_is_ok(damwand):
+    assert Profiel(voorland_punten=VOORLAND, kruinhoogte=5.0, damwand=damwand).check() == ProfielError.OK
+
+
+def test_alleen_voorland_uit_v3_bestand_geeft_invoer():
+    regels = ["VERSIE 3.0", "KRUINHOOGTE 5.0", "VOORLAND 2", "0 0 0", "0 0 0.8", "20 1 0.8"]
+    tekst = "".join(regel + chr(10) for regel in regels)
+    assert Profiel.from_string(tekst).check() == ProfielError.INVOER
+
+
+def test_ongeldig_voorland_wordt_voor_ontbrekende_dijk_gemeld():
+    profiel = Profiel(voorland_punten=[ProfielPunt(0, 0, 0.8), ProfielPunt(5, 0.1, 0.8)], kruinhoogte=5.0)
+    assert profiel.check() == ProfielError.ERROR103

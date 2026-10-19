@@ -1,5 +1,5 @@
 Open
-- Ruwheid (ERROR121): foutcode 121 is gekozen omdat die nog vrij was; controleren of dit overeenkomt met
-  de originele C#-code / Hydra-documentatie. Ook bevestigen dat het voorland niet op ruwheid gecontroleerd
-  hoeft te worden en dat de grenzen 0.5 en 1.0 zelf zijn toegestaan.
+- Ruwheid (ERROR121): de C#-code had geen ruwheidscontrole en geen foutcode 121 (de constanten RUWHEIDLAAG
+  en RUWHEIDHOOG bestonden wel). Nog bevestigen met de Hydra-documentatie dat de controle zo klopt: alleen
+  dijkdelen, grenzen 0.5 en 1.0 zelf toegestaan.
 - Packaging: pyproject.toml, package-naam (nu 'src'), installatie-instructies in README.md kloppen nog niet.

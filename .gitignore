@@ -16,3 +16,6 @@ htmlcov/
 # Virtual environments
 .venv/
 **__pycache__/
+
+# Other
+*.zip
