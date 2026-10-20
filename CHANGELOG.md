@@ -12,7 +12,7 @@ its own deviations from the C# code are listed at the end of the 2.0.0 section.
 
 ## [Unreleased]
 
-## [2.0.0] - 2026-10-19
+## [2.0.0] - 2026-10-20
 
 ### API: from C# to Python
 
